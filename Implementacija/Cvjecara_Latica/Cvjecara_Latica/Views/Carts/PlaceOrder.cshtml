@@ -1,0 +1,66 @@
+﻿@{
+    ViewData["Title"] = "Place Order";
+}
+
+<div style="display: flex; justify-content: space-between; padding: 30px;">
+    <!-- Sekcija 1: Total -->
+    <div style="flex: 1; padding: 20px;">
+        <h4 style="color:#7a1c1c; margin-top: 10px;">
+            <span><strong>Total:</strong> @($"{ViewBag.Total:F2} USD")</span>
+            <p style="font-weight: bold; color: #7a1c1c;">Free delivery</p>
+        </h4>
+    </div>
+
+    <!-- Sekcija 2: Dostava i forma -->
+    <div style="flex: 1; padding: 20px;">
+        <h3 style="background-color: white; color: #7a1c1c; padding: 10px; text-align: center;">Delivery Information</h3>
+
+        <form asp-controller="Carts" asp-action="SubmitOrder" method="post">
+            <!-- Name -->
+            <input class="form-control mb-2" placeholder="Name" name="name"
+                   maxlength="50" minlength="2" required
+                   pattern="^[A-Za-zČčĆćŽžĐđŠš\s]+$"
+                   title="Name can only contain letters." />
+
+            <!-- City -->
+            <input class="form-control mb-2" placeholder="City" name="city"
+                   maxlength="40" required
+                   pattern="^[A-Za-zČčĆćŽžĐđŠš\s]+$"
+                   title="City can only contain letters." />
+
+            <!-- Address -->
+            <input class="form-control mb-2" placeholder="Address And Postal Number" name="address"
+                   maxlength="100" required
+                   pattern="^[A-Za-z0-9ČčĆćŽžĐđŠš\s\.]+$"
+                   title="Address can contain letters, numbers, and periods." />
+
+            <!-- Phone -->
+            <input class="form-control mb-2" placeholder="Phone Number" name="phone"
+                   maxlength="15" required
+                   pattern="^[0-9]{7,15}$"
+                   title="Phone number must be between 7 and 15 digits." /
+                   <!-- Discount Code -->
+            <input class="form-control mb-2" placeholder="Discount Code (optional)" name="discountCode"
+                   maxlength="20"
+                   pattern="^[A-Z0-9\-]+$"
+                   title="Code can contain only capital letters, numbers, and hyphens." />
+
+            @{
+                var minDate = DateTime.Now.Date.AddDays(2);
+                var minDateTimeString = minDate.ToString("yyyy-MM-ddT09:00");
+                var maxDateTimeString = minDate.AddYears(1).ToString("yyyy-MM-ddT17:00");
+            }
+
+            <input class="form-control mb-2"
+                   type="datetime-local"
+                   name="deliveryDate"
+                   min="@minDateTimeString"
+                   max="@maxDateTimeString"
+                   required
+                   title="Please choose a delivery time between 09:00 and 17:00, starting two days from today." />
+
+            <!-- Submit -->
+            <button type="submit" class="btn btn-danger w-100 mt-3">Complete Order</button>
+        </form>
+    </div>
+</div>

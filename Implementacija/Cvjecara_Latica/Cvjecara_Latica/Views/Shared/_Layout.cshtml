@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Cvjecara_Latica</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Cvjecara_Latica.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }
+</head>
+<body>
+    <header>
+    
+            <nav class="custom-header">
+            <div class="nav-container">
+                <!-- Lijeva strana -->
+                <div class="nav-left">
+                    @using Microsoft.AspNetCore.Identity
+                    @inject SignInManager<Person> SignInManager
+                    @inject UserManager<Person> UserManager
+
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <form asp-controller="Home" asp-action="Logout" method="post" class="form-inline">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-link color: #661a13">Logout</button>
+                            <span class="color: #661a13">Hello, <strong>@User.Identity?.Name</strong>!</span>
+                        </form>
+                    }
+                   
+                </div>
+                    <div class="nav-right">
+                        <a href="/Home/Contact" class="nav-link">Contact</a>
+                        <a href="/Home/Help" class="nav-link">Help</a>
+                        <a href="/" class="nav-icon"><i class="fas fa-home"></i></a>
+                        <a href="/Home/Search" class="nav-icon"><i class="fas fa-search"></i></a>
+                        <a href="/Home/Login" class="nav-icon"><i class="fas fa-user"></i></a>
+                        <a href="/Carts/Index" class="nav-icon"><i class="fas fa-shopping-cart"></i></a>
+                   
+                    </div>
+                </div>
+            </nav>
+        
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+   
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

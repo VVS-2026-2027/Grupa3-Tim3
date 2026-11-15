@@ -1,0 +1,35 @@
+﻿@model Cvjecara_Latica.Models.Product
+
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<div class="back-link-left">
+    <!--<a asp-controller="Home" asp-action="Search">← Back to Shop</a>-->
+    <a asp-controller="Home" asp-action="Search" class="btn btn-light" style="margin-top: 20px;">← Back to Shop</a>
+</div>
+
+<div class="product-details">
+    <div class="image-section">
+        <img src="@Model.ImageUrl" alt="@Model.Name" class="product-image" />
+    </div>
+    <div class="info-section">
+        <h2>@Model.Name</h2>
+        <h3 class="price">@Model.Price.ToString("0.00") USD</h3>
+        <p class="description">@Model.Description</p>
+        <form asp-controller="Carts" asp-action="AddToCart" method="post">
+            <input type="hidden" name="productId" value="@Model.ProductID" />
+            <button type="submit" class="add-to-cart-btn"
+                    @(User.Identity.IsAuthenticated ? "" : "disabled")>
+                <i class="fa fa-shopping-cart"></i> Add to Cart
+            </button>
+        </form>
+
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <p class="text-danger mt-2">Please log in to add items to your cart.</p>
+        }
+    </div>
+</div>
+
+
