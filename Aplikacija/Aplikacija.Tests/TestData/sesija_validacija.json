@@ -1,0 +1,9 @@
+[
+  { "opis": "Oba vremena validna", "vrijemePocetka": "2026-11-15T10:00:00", "vrijemeZavrsetka": "2026-11-15T12:00:00", "brojGresaka": 0 },
+  { "opis": "Donja granica 2020-01-01", "vrijemePocetka": "2020-01-01T00:00:00", "vrijemeZavrsetka": "2020-01-01T01:00:00", "brojGresaka": 0 },
+  { "opis": "Gornja granica 2100-12-31", "vrijemePocetka": "2100-12-30T00:00:00", "vrijemeZavrsetka": "2100-12-31T00:00:00", "brojGresaka": 0 },
+  { "opis": "Pocetak prije 2020", "vrijemePocetka": "2019-12-31T23:59:59", "vrijemeZavrsetka": "2026-11-15T12:00:00", "brojGresaka": 1 },
+  { "opis": "Kraj poslije 2100", "vrijemePocetka": "2026-11-15T10:00:00", "vrijemeZavrsetka": "2101-01-01T00:00:00", "brojGresaka": 1 },
+  { "opis": "Oba van opsega", "vrijemePocetka": "2019-01-01T00:00:00", "vrijemeZavrsetka": "2101-01-01T00:00:00", "brojGresaka": 2 },
+  { "opis": "Neinicijalizirani datumi", "vrijemePocetka": "0001-01-01T00:00:00", "vrijemeZavrsetka": "0001-01-01T00:00:00", "brojGresaka": 2 }
+]

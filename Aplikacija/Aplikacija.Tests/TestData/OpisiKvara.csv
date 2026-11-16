@@ -1,0 +1,17 @@
+Slucaj;Opis;Ispravan;BrojGresaka
+DonjaGranica;abcde;true;0
+GornjaGranica;12345678901234567890123456789012345678901234567890;true;0
+ObicanOpis;Monitor ne radi;true;0
+SlovaIBrojevi;PC 123;true;0
+RazmaciUOpisu;  Kvar  ;true;0
+CetiriZnaka;abcd;false;1
+PedesetJedanZnak;123456789012345678901234567890123456789012345678901;false;1
+Null;<NULL>;false;1
+Prazan;"";false;1
+SamoRazmaci;"     ";false;1
+Interpunkcija;Kvar!;false;1
+Dijakritika;Miš ne radi;false;1
+NoviRed;"Kvar
+opis";false;1
+TackaZarez;"Kvar;opis";false;1
+JedanZnak;A;false;1

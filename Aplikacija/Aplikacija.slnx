@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Aplikacija.Tests/Aplikacija.Tests.csproj" Id="f7cf4284-952b-4c1b-8291-5170f5d37ec4" />
+  <Project Path="Aplikacija/Aplikacija.csproj" />
+</Solution>

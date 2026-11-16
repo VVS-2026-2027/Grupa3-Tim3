@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Aplikacija.Models.Uredjaj>
+
+@{
+    ViewData["Title"] = "Devices";
+}
+
+<h1>Device Management</h1>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="card p-3">
+            <h4>PC Devices</h4>
+            <p>Manage gaming PCs.</p>
+
+            <a asp-controller="Uredjaj"
+                   asp-action="PC"
+                   class="btn btn-primary">
+                View PCs
+            </a>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-3">
+            <h4>PlayStation Devices</h4>
+            <p>Manage PlayStation consoles.</p>
+
+            <a asp-controller="Uredjaj"
+                   asp-action="PlayStation"
+                   class="btn btn-primary">
+                View PlayStations
+            </a>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-3">
+            <h4>Xbox Devices</h4>
+            <p>Manage Xbox consoles.</p>
+
+            <a asp-controller="Uredjaj"
+                   asp-action="XBox"
+                   class="btn btn-primary">
+                View Xboxes
+            </a>
+        </div>
+    </div>
+
+</div>

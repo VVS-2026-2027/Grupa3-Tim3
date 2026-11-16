@@ -1,0 +1,11 @@
+slucaj,iznos,brojGresaka
+Negativan,-5,1
+Nula,0,1
+IspodDonjeGranice,0.009,1
+DonjaGranica,0.01,0
+MaloIznadDonje,0.02,0
+Uobicajen,15.5,0
+MaloIspodGornje,999999.99,0
+GornjaGranica,1000000,0
+IznadGornjeGranice,1000000.01,1
+VelikiIznos,1e9,1

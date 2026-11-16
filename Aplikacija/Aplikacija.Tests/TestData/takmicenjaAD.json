@@ -1,0 +1,26 @@
+[
+  {
+    "Opis": "Sva polja popunjena",
+    "ApiResponse": [ { "name": "Team A vs Team B", "begin_at": "2030-05-01T12:00:00", "videogame": { "name": "CS2" }, "league": { "name": "ESL" } } ],
+    "ExpectedNaziv": "Team A vs Team B",
+    "ExpectedIgra": "CS2"
+  },
+  {
+    "Opis": "Naziv je null - koristi se naziv lige",
+    "ApiResponse": [ { "name": null, "begin_at": "2030-05-01T12:00:00", "videogame": { "name": "Valorant" }, "league": { "name": "VCT" } } ],
+    "ExpectedNaziv": "VCT",
+    "ExpectedIgra": "Valorant"
+  },
+  {
+    "Opis": "Nema naziva ni lige ni igre - default vrijednosti",
+    "ApiResponse": [ { "begin_at": "2030-05-01T12:00:00" } ],
+    "ExpectedNaziv": "Esports Match",
+    "ExpectedIgra": "Game"
+  },
+  {
+    "Opis": "Nema datuma (begin_at null) - takmicenje se svejedno dodaje",
+    "ApiResponse": [ { "name": "Bez datuma", "begin_at": null, "videogame": { "name": "Dota 2" } } ],
+    "ExpectedNaziv": "Bez datuma",
+    "ExpectedIgra": "Dota 2"
+  }
+]

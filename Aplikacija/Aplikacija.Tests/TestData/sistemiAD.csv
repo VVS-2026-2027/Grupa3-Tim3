@@ -1,0 +1,4 @@
+NazivSistema,ApiUrl,IntervalOsvjezavanja
+PandaScore,https://api.pandascore.co/matches,30
+LokalniTest,http://localhost:5000/api,0
+Backup,https://backup.example.com/v2,120

@@ -1,0 +1,15 @@
+[
+  { "opis": "Proizvod nije unesen (null)", "svojstvo": "Proizvod", "duzina": -1, "brojGresaka": 0 },
+  { "opis": "Proizvod prazan string", "svojstvo": "Proizvod", "duzina": 0, "brojGresaka": 1 },
+  { "opis": "Proizvod jedan znak", "svojstvo": "Proizvod", "duzina": 1, "brojGresaka": 1 },
+  { "opis": "Proizvod donja granica", "svojstvo": "Proizvod", "duzina": 2, "brojGresaka": 0 },
+  { "opis": "Proizvod uobicajena duzina", "svojstvo": "Proizvod", "duzina": 20, "brojGresaka": 0 },
+  { "opis": "Proizvod gornja granica", "svojstvo": "Proizvod", "duzina": 100, "brojGresaka": 0 },
+  { "opis": "Proizvod iznad gornje granice", "svojstvo": "Proizvod", "duzina": 101, "brojGresaka": 1 },
+  { "opis": "Poruka nije unesena (null)", "svojstvo": "Poruka", "duzina": -1, "brojGresaka": 0 },
+  { "opis": "Poruka prazan string", "svojstvo": "Poruka", "duzina": 0, "brojGresaka": 1 },
+  { "opis": "Poruka jedan znak", "svojstvo": "Poruka", "duzina": 1, "brojGresaka": 1 },
+  { "opis": "Poruka donja granica", "svojstvo": "Poruka", "duzina": 2, "brojGresaka": 0 },
+  { "opis": "Poruka gornja granica", "svojstvo": "Poruka", "duzina": 300, "brojGresaka": 0 },
+  { "opis": "Poruka iznad gornje granice", "svojstvo": "Poruka", "duzina": 301, "brojGresaka": 1 }
+]

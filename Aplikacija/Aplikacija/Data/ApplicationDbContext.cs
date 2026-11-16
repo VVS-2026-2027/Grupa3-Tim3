@@ -1,0 +1,113 @@
+﻿using Aplikacija.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+
+public class ApplicationDbContext : IdentityDbContext<Korisnik>
+{
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        : base(options)
+    {
+    }
+
+    public DbSet<Korisnik> Korisnik { get; set; }
+    public DbSet<Rezervacija> Rezervacija { get; set; }
+    public DbSet<Narudzba> Narudzba { get; set; }
+    public DbSet<Takmicenje> Takmicenje { get; set; }
+    public DbSet<SistemZaTakmicenje> SistemZaTakmicenje { get; set; }
+    public DbSet<Sesija> Sesija { get; set; }
+    public DbSet<Kvar> Kvar { get; set; }
+
+    public DbSet<Uredjaj> Uredjaj { get; set; }
+    public DbSet<PC> PC { get; set; }
+    public DbSet<PlayStation> PlayStation { get; set; }
+    public DbSet<XBox> XBox { get; set; }
+
+    public DbSet<LoyaltyProgram> LoyaltyProgram { get; set; }
+    public DbSet<Placanje> Placanje { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        // Tabele
+        modelBuilder.Entity<Korisnik>().ToTable("Korisnik");
+        modelBuilder.Entity<Rezervacija>().ToTable("Rezervacija");
+        modelBuilder.Entity<Narudzba>().ToTable("Narudzba");
+        modelBuilder.Entity<Takmicenje>().ToTable("Takmicenje");
+        modelBuilder.Entity<SistemZaTakmicenje>().ToTable("SistemZaTakmicenje");
+        modelBuilder.Entity<Sesija>().ToTable("Sesija");
+        modelBuilder.Entity<Kvar>().ToTable("Kvar");
+
+        modelBuilder.Entity<Uredjaj>().ToTable("Uredjaj");
+        modelBuilder.Entity<PC>().ToTable("PC");
+        modelBuilder.Entity<PlayStation>().ToTable("PlayStation");
+        modelBuilder.Entity<XBox>().ToTable("XBox");
+
+        modelBuilder.Entity<LoyaltyProgram>().ToTable("LoyaltyProgram");
+        modelBuilder.Entity<Placanje>().ToTable("Placanje");
+
+        modelBuilder.Entity<Kvar>()
+        .HasOne(k => k.Sesija)
+        .WithMany()
+        .HasForeignKey(k => k.SesijaId)
+        .OnDelete(DeleteBehavior.NoAction);
+
+        modelBuilder.Entity<Kvar>()
+        .HasOne(k => k.Uredjaj)
+        .WithMany()
+        .HasForeignKey(k => k.UredjajId)
+        .OnDelete(DeleteBehavior.NoAction);
+
+        modelBuilder.Entity<Sesija>()
+       .HasOne(s => s.Uredjaj)
+       .WithMany()
+       .HasForeignKey(s => s.UredjajId)
+       .OnDelete(DeleteBehavior.NoAction);
+
+        modelBuilder.Entity<Sesija>()
+            .HasOne(s => s.Korisnik)
+            .WithMany()
+            .HasForeignKey(s => s.KorisnikId)
+            .OnDelete(DeleteBehavior.NoAction);
+
+        modelBuilder.Entity<Sesija>()
+            .HasOne(s => s.Takmicenje)
+            .WithMany()
+            .HasForeignKey(s => s.TakmicenjeId)
+            .OnDelete(DeleteBehavior.NoAction);
+
+        modelBuilder.Entity<Placanje>()
+    .HasOne(p => p.Rezervacija)
+    .WithOne(r => r.Placanje)
+    .HasForeignKey<Placanje>(p => p.RezervacijaId)
+    .OnDelete(DeleteBehavior.NoAction);
+
+        modelBuilder.Entity<Placanje>()
+            .HasOne(p => p.Sesija)
+            .WithMany(s => s.Placanja)
+            .HasForeignKey(p => p.SesijaId)
+            .OnDelete(DeleteBehavior.NoAction);
+
+        modelBuilder.Entity<Placanje>()
+            .HasOne(p => p.Korisnik)
+            .WithMany()
+            .HasForeignKey(p => p.KorisnikId)
+            .OnDelete(DeleteBehavior.NoAction);
+        // ENUM konverzije
+        modelBuilder.Entity<Rezervacija>()
+            .Property(r => r.Status)
+            .HasConversion<string>();
+
+        modelBuilder.Entity<Sesija>()
+            .Property(s => s.Status)
+            .HasConversion<string>();
+
+        modelBuilder.Entity<Kvar>()
+            .Property(k => k.Status)
+            .HasConversion<string>();
+
+        modelBuilder.Entity<Uredjaj>()
+            .Property(u => u.Status)
+            .HasConversion<string>();
+    }
+}

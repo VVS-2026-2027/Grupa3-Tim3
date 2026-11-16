@@ -1,0 +1,82 @@
+﻿@model Aplikacija.Models.Korisnik
+
+@{
+    ViewData["Title"] = "Delete User";
+}
+
+<div class="container mt-4">
+
+    <div class="card border-danger shadow">
+        <div class="card-header bg-danger text-white">
+            <h3 class="mb-0">Delete User</h3>
+        </div>
+
+        <div class="card-body">
+
+            <p class="text-danger">
+                <strong>Warning!</strong> This action cannot be undone.
+            </p>
+
+            <hr />
+
+            <div class="row mb-3">
+                <div class="col-md-3">
+                    <strong>First Name</strong>
+                </div>
+                <div class="col-md-9">
+                    @Model.Ime
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-3">
+                    <strong>Last Name</strong>
+                </div>
+                <div class="col-md-9">
+                    @Model.Prezime
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-3">
+                    <strong>Email</strong>
+                </div>
+                <div class="col-md-9">
+                    @Model.Email
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-3">
+                    <strong>Membership</strong>
+                </div>
+                <div class="col-md-9">
+                    @if (Model.ClanarinaAktivna)
+                    {
+                        <span class="badge bg-success">Active</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-secondary">Inactive</span>
+                    }
+                </div>
+            </div>
+
+            <hr />
+
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="Id" />
+
+                <button type="submit" class="btn btn-danger">
+                    Delete User
+                </button>
+
+                <a asp-action="Index" class="btn btn-secondary">
+                    Cancel
+                </a>
+            </form>
+
+        </div>
+    </div>
+
+</div>

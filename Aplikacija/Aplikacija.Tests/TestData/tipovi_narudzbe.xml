@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tipovi>
+  <tip vrijednost="0" naziv="Narudzba" definisan="true" />
+  <tip vrijednost="1" naziv="Poruka" definisan="true" />
+  <tip vrijednost="-1" naziv="-1" definisan="false" />
+  <tip vrijednost="2" naziv="2" definisan="false" />
+  <tip vrijednost="2147483647" naziv="2147483647" definisan="false" />
+</tipovi>

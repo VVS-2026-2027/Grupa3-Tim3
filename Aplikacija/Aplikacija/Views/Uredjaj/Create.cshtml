@@ -1,0 +1,86 @@
+﻿@using Aplikacija.Models
+
+@{
+    ViewData["Title"] = "Add Device";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-7 col-lg-6">
+
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Add New Device</h4>
+                </div>
+
+                <div class="card-body p-4">
+                    <form asp-action="Create" method="post">
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="form-group mb-3">
+                            <label class="form-label">Device Type</label>
+                            <select name="VrstaUredjaja" id="VrstaUredjaja" class="form-select">
+                                <option value="">-- Select device type --</option>
+                                <option value="PC">PC</option>
+                                <option value="PlayStation">PlayStation</option>
+                                <option value="XBox">XBox</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label class="form-label">Status</label>
+                            <select name="Status" class="form-select" asp-items="Html.GetEnumSelectList<StatusUredjaja>()"></select>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label class="form-label">Device Name</label>
+                            <input name="Naziv" class="form-control" placeholder="Example: PC 1, PlayStation 5, XBox 2" />
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label class="form-label">Price Per Hour</label>
+                            <input name="CijenaPoSatu" class="form-control" type="number" step="0.01" placeholder="Example: 5.00" />
+                        </div>
+
+                        <div class="form-group mb-3" id="modelDiv" style="display:none;">
+                            <label class="form-label">PC Model</label>
+                            <input name="Model" class="form-control" placeholder="Example: RTX 3060 / i5 / 16GB RAM" />
+                            <small class="text-muted">This field is only required for PC devices.</small>
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-4">
+                            <a asp-action="Index" class="btn btn-outline-secondary">
+                                Back to List
+                            </a>
+
+                            <button type="submit" class="btn btn-primary">
+                                Add Device
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        document.getElementById("VrstaUredjaja").addEventListener("change", function () {
+            var modelDiv = document.getElementById("modelDiv");
+
+            if (this.value === "PC") {
+                modelDiv.style.display = "block";
+            } else {
+                modelDiv.style.display = "none";
+            }
+        });
+    </script>
+}
