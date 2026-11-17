@@ -1,0 +1,6 @@
+Naziv,Cijena,OcekivanoValidan
+Ruza,5.5,true
+R,5.5,false
+Tulipan,0,false
+Orhideja,10000,true
+Lala,10000.01,false

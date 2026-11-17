@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<proizvodi>
+  <proizvod naziv="Ljiljan" cijena="12.5" ocekivanoValidan="true" />
+  <proizvod naziv="" cijena="12.5" ocekivanoValidan="false" />
+  <proizvod naziv="Karanfil" cijena="-1" ocekivanoValidan="false" />
+</proizvodi>
