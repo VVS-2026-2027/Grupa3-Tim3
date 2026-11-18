@@ -1,0 +1,6 @@
+[
+  { "tip": "PercentageOff", "iznos": 10,  "cijenaKorpe": 50.0, "ocekivanoUkupno": 45.0 },
+  { "tip": "PercentageOff", "iznos": 100, "cijenaKorpe": 50.0, "ocekivanoUkupno": 0.0 },
+  { "tip": "AmountOff",     "iznos": 20,  "cijenaKorpe": 50.0, "ocekivanoUkupno": 30.0 },
+  { "tip": "AmountOff",     "iznos": 80,  "cijenaKorpe": 50.0, "ocekivanoUkupno": 0.0 }
+]

@@ -120,7 +120,7 @@ namespace Cvjecara_Latica.Controllers
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             var originalCart = await _context.Cart
-                .FirstOrDefaultAsync(c => c.CartID == id && (c.PersonID == userId) || User.IsInRole("Administrator"));
+                .FirstOrDefaultAsync(c => c.CartID == id && (c.PersonID == userId || User.IsInRole("Administrator")));
 
             if (originalCart == null)
                 return Forbid();
