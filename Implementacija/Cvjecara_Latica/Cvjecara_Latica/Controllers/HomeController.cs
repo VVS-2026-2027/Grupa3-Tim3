@@ -14,7 +14,7 @@ namespace Cvjecara_Latica.Controllers
     private readonly UserManager<Person> _userManager;
     private readonly SignInManager<Person> _signInManager;
     private readonly ApplicationDbContext _context;
-    private readonly EmailService _emailService;
+    private readonly IEmailService _emailService;
 
 
 
@@ -23,7 +23,7 @@ namespace Cvjecara_Latica.Controllers
         UserManager<Person> userManager,
         SignInManager<Person> signInManager,
         ApplicationDbContext context,
-        EmailService emailService)
+        IEmailService emailService)
     {
         _logger = logger;
         _userManager = userManager;

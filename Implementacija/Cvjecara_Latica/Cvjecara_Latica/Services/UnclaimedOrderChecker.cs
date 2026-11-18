@@ -26,7 +26,7 @@ public class UnclaimedOrderChecker : BackgroundService
                 using (var scope = _serviceProvider.CreateScope())
                 {
                     var _context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-                    var _emailService = scope.ServiceProvider.GetRequiredService<EmailService>();
+                    var _emailService = scope.ServiceProvider.GetRequiredService<IEmailService>();
 
                     // 1. Podsjetnici
                     var unclaimedOrders = await _context.Orders

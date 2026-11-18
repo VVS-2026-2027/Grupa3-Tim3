@@ -14,9 +14,9 @@ namespace Cvjecara_Latica.Controllers
     public class CartsController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly EmailService _emailService;
+        private readonly IEmailService _emailService;
 
-        public CartsController(ApplicationDbContext context, EmailService emailService)
+        public CartsController(ApplicationDbContext context, IEmailService emailService)
         {
             _context = context;
             _emailService = emailService;
