@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Proizvodi>
+    <Proizvod>
+        <Naziv>Ruza</Naziv>
+        <Cijena>15.0</Cijena>
+        <Zaliha>20</Zaliha>
+    </Proizvod>
+    <Proizvod>
+        <Naziv>Tulipan</Naziv>
+        <Cijena>8.0</Cijena>
+        <Zaliha>10</Zaliha>
+    </Proizvod>
+    <Proizvod>
+        <Naziv>Orhideja</Naziv>
+        <Cijena>30.0</Cijena>
+        <Zaliha>5</Zaliha>
+    </Proizvod>
+</Proizvodi>
