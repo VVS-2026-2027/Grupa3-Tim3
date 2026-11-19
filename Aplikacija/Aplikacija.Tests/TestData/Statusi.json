@@ -1,0 +1,19 @@
+{
+  "uredjaji": [
+    {"slucaj":"Slobodan", "vrijednost":0, "ispravan":true},
+    {"slucaj":"Zauzet", "vrijednost":1, "ispravan":true},
+    {"slucaj":"Neispravan", "vrijednost":2, "ispravan":true},
+    {"slucaj":"Rezervisan", "vrijednost":3, "ispravan":true},
+    {"slucaj":"IspodGranice", "vrijednost":-1, "ispravan":false},
+    {"slucaj":"IznadGranice", "vrijednost":4, "ispravan":false},
+    {"slucaj":"IntMax", "vrijednost":2147483647, "ispravan":false}
+  ],
+  "kvarovi": [
+    {"slucaj":"Prijavljen", "vrijednost":0, "ispravan":true},
+    {"slucaj":"UObradi", "vrijednost":1, "ispravan":true},
+    {"slucaj":"Otklonjen", "vrijednost":2, "ispravan":true},
+    {"slucaj":"IspodGranice", "vrijednost":-1, "ispravan":false},
+    {"slucaj":"IznadGranice", "vrijednost":3, "ispravan":false},
+    {"slucaj":"IntMax", "vrijednost":2147483647, "ispravan":false}
+  ]
+}

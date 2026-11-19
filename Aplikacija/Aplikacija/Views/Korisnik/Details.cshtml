@@ -1,0 +1,72 @@
+﻿@model Aplikacija.Models.Korisnik
+
+@{
+    ViewData["Title"] = "User Details";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0">User Details</h3>
+        </div>
+
+        <div class="card-body">
+
+            <div class="row mb-3">
+                <div class="col-md-3"><strong>First Name</strong></div>
+                <div class="col-md-9">@Model.Ime</div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-3"><strong>Last Name</strong></div>
+                <div class="col-md-9">@Model.Prezime</div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-3"><strong>Email</strong></div>
+                <div class="col-md-9">@Model.Email</div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-3"><strong>Username</strong></div>
+                <div class="col-md-9">@Model.UserName</div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-3"><strong>Membership</strong></div>
+                <div class="col-md-9">
+                    @if (Model.ClanarinaAktivna)
+                    {
+                        <span class="badge bg-success">Active</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-secondary">Inactive</span>
+                    }
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-3"><strong>Loyalty Points</strong></div>
+                <div class="col-md-9">
+                    <span class="badge bg-warning text-dark">
+                        @(ViewBag.LoyaltyPoints ?? 0) points
+                    </span>
+                </div>
+            </div>
+
+            <hr />
+
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">
+                Edit User
+            </a>
+
+            <a asp-action="Index" class="btn btn-secondary">
+                Back
+            </a>
+
+        </div>
+    </div>
+
+</div>

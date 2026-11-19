@@ -1,0 +1,35 @@
+﻿@model Aplikacija.Models.Rezervacija
+
+@{
+    ViewData["Title"] = "Reservation Details";
+}
+
+<h2>Reservation Details</h2>
+
+<div class="card p-4" style="max-width: 650px;">
+    <dl class="row mb-0">
+        <dt class="col-sm-4">Start time</dt>
+        <dd class="col-sm-8">@Html.DisplayFor(model => model.VrijemeOd)</dd>
+
+        <dt class="col-sm-4">End time</dt>
+        <dd class="col-sm-8">@Html.DisplayFor(model => model.VrijemeDo)</dd>
+
+        <dt class="col-sm-4">Status</dt>
+        <dd class="col-sm-8">@Html.DisplayFor(model => model.Status)</dd>
+
+        <dt class="col-sm-4">User</dt>
+        <dd class="col-sm-8">@Model.Korisnik?.Email</dd>
+
+        <dt class="col-sm-4">Device</dt>
+        <dd class="col-sm-8">@Model.Uredjaj?.TipUredjaja</dd>
+    </dl>
+</div>
+
+<div class="mt-3">
+    @if (User.IsInRole("Administrator"))
+    {
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+    }
+
+    <a asp-action="Index" class="btn btn-secondary ms-2">Back to List</a>
+</div>

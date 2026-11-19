@@ -1,0 +1,102 @@
+# ========================
+# Visual Studio
+# ========================
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.rsuser
+*.vsidx
+TestResults/
+coverage-report*/
+
+# Publish profile user postavke (sami .pubxml profili ostaju u repou)
+*.pubxml.user
+
+# ========================
+# Build izlaz
+# ========================
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa]rtifacts/
+[Ll]og/
+[Ll]ogs/
+
+# Publish izlaz
+publish/
+*.Publish.xml
+PublishScripts/
+
+# ========================
+# Testovi / code coverage
+# ========================
+[Tt]est[Rr]esult*/
+*.trx
+coverage*.json
+coverage*.xml
+coverage*.info
+*.coverage
+*.coveragexml
+.coverlet/
+TestResults/
+
+# ========================
+# NuGet
+# ========================
+*.nupkg
+*.snupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+*.nuget.props
+*.nuget.targets
+project.lock.json
+project.fragment.lock.json
+
+# ========================
+# Lokalne baze / tajne
+# ========================
+*.mdf
+*.ldf
+*.ndf
+*.db
+*.db-shm
+*.db-wal
+.env
+.env.*
+secrets.json
+
+# ========================
+# Ostali IDE-ovi
+# ========================
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.iml
+*.sln.iml
+
+# ========================
+# Log / temp
+# ========================
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+
+# ========================
+# Operativni sistem
+# ========================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
