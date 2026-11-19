@@ -1,0 +1,34 @@
+Case,Query,FlowerTypes,Colors,Category,Price,ExpectedProductIds
+NoFilters,,,,,,1|2|3|4
+Whitespace,   ,,,   ,   ,1|2|3|4
+QueryName,Rose bouquet,,,,,1
+QueryDescription,Sunny,,,,,2
+QueryFlowerType,Lily,,,,,3
+QueryColor,Red,,,,,1|4
+QueryNoMatch,missing,,,,,
+FlowerType,,rose,,,,1|4
+MultipleFlowerTypes,,rose|lily,,,,1|3|4
+UnknownFlowerType,,orchid,,,,
+UppercaseFlowerType,,ROSE,,,,
+Color,,,red,,,1|4
+MultipleColors,,,red|white,,,1|3|4
+UnknownColor,,,blue,,,
+UppercaseColor,,,RED,,,
+CategoryCaseInsensitive,,,,bOuQuEt,,1|2
+UnknownCategory,,,,missing,,
+PriceInclusiveRange,,,,,10-20 USD,1|2|4
+PriceSinglePointRange,,,,,20-20,2|4
+PriceReversedRange,,,,,30-10,
+PriceExact,,,,,20 USD,2|4
+PriceExactWhitespace,,,,, 20 USD ,2|4
+PriceNoMatch,,,,,999,
+PriceZero,,,,,0,
+PriceMalformedRange,,,,,10-20-30,1|2|3|4
+PriceInvalidMinimum,,,,,bad-20,1|2|3|4
+PriceInvalidMaximum,,,,,10-bad,1|2|3|4
+PriceOverflowMinimum,,,,,2147483648-30,1|2|3|4
+PriceOverflowMaximum,,,,,10-2147483648,1|2|3|4
+PriceInvalidExact,,,,,invalid,1|2|3|4
+PriceDecimalUnsupported,,,,,20.5,1|2|3|4
+CombinedFilters,garden,rose,red,single,10-20 USD,4
+CombinedFiltersNoMatch,garden,rose,red,bouquet,20 USD,

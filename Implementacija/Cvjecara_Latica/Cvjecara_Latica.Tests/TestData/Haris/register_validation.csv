@@ -1,0 +1,73 @@
+Case,Property,Value,ExpectedValid,ExpectedError
+FirstName_null,FirstName,<NULL>,false,First name is required.
+FirstName_empty,FirstName,,false,First name is required.
+FirstName_whitespace,FirstName,   ,false,First name is required.
+FirstName_below_min,FirstName,A,false,First name must be between 2 and 30 characters.
+FirstName_min,FirstName,Ab,true,
+FirstName_max,FirstName,AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,true,
+FirstName_above_max,FirstName,AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,false,First name must be between 2 and 30 characters.
+FirstName_hyphen,FirstName,Ana-Marija,true,
+FirstName_space,FirstName,Ana Marija,true,
+FirstName_digit,FirstName,Ana1,false,"First name can contain only letters, spaces, and hyphens."
+FirstName_symbol,FirstName,Ana!,false,"First name can contain only letters, spaces, and hyphens."
+FirstName_local_letter,FirstName,Šaban,false,"First name can contain only letters, spaces, and hyphens."
+LastName_null,LastName,<NULL>,false,Last name is required.
+LastName_empty,LastName,,false,Last name is required.
+LastName_whitespace,LastName,   ,false,Last name is required.
+LastName_below_min,LastName,A,false,Last name must be between 2 and 30 characters.
+LastName_min,LastName,Ab,true,
+LastName_max,LastName,AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,true,
+LastName_above_max,LastName,AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,false,Last name must be between 2 and 30 characters.
+LastName_hyphen,LastName,Ana-Marija,true,
+LastName_space,LastName,Ana Marija,true,
+LastName_digit,LastName,Ana1,false,"Last name can contain only letters, spaces, and hyphens."
+LastName_symbol,LastName,Ana!,false,"Last name can contain only letters, spaces, and hyphens."
+LastName_local_letter,LastName,Šaban,false,"Last name can contain only letters, spaces, and hyphens."
+Address_null,HomeAdress,<NULL>,false,Home address is required.
+Address_empty,HomeAdress,,false,Home address is required.
+Address_whitespace,HomeAdress,   ,false,Home address is required.
+Address_below_min,HomeAdress,Ab 1,false,Home address must be between 5 and 30 characters.
+Address_min,HomeAdress,Abc 1,true,
+Address_max,HomeAdress,AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,true,
+Address_above_max,HomeAdress,AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,false,Home address must be between 5 and 30 characters.
+Address_punctuation,HomeAdress,"Test, br. 1-2",true,
+Address_symbol,HomeAdress,Test #1,false,"Address can contain only letters, numbers, spaces, commas, dots, and hyphens."
+Address_local_letter,HomeAdress,Ulica Šehida 1,false,"Address can contain only letters, numbers, spaces, commas, dots, and hyphens."
+Email_null,Email,<NULL>,false,Email is required.
+Email_empty,Email,,false,Email is required.
+Email_whitespace,Email,   ,false,Email is required.
+Email_missing_at,Email,invalid,false,Invalid email format.
+Email_missing_local,Email,@example.com,false,Invalid email format.
+Email_missing_domain,Email,haris@,false,Invalid email format.
+Email_no_domain_suffix,Email,haris@example,false,"Email must be valid and contain a domain, e.g. example@mail.com"
+Email_one_letter_suffix,Email,haris@example.c,false,"Email must be valid and contain a domain, e.g. example@mail.com"
+Email_spaces,Email,har is@example.com,false,"Email must be valid and contain a domain, e.g. example@mail.com"
+Email_standard,Email,haris@example.com,true,
+Email_plus,Email,haris+test@example.ba,true,
+Email_subdomain,Email,haris.test@mail.example.com,true,
+Email_uppercase,Email,HARIS@EXAMPLE.COM,true,
+Phone_null,PhoneNumber,<NULL>,false,Phone number is required.
+Phone_empty,PhoneNumber,,false,Phone number is required.
+Phone_whitespace,PhoneNumber,   ,false,Phone number is required.
+Phone_below_min,PhoneNumber,11111111,false,Phone number must be between 9 and 15 digits.
+Phone_min,PhoneNumber,111111111,true,
+Phone_max,PhoneNumber,111111111111111,true,
+Phone_above_max,PhoneNumber,1111111111111111,false,Phone number must be between 9 and 15 digits.
+Phone_plus_min,PhoneNumber,+111111111,true,
+Phone_plus_max,PhoneNumber,+111111111111111,true,
+Phone_letters,PhoneNumber,061abc123,false,Phone number must be between 9 and 15 digits.
+Phone_spaces,PhoneNumber,061 123456,false,Phone number must be between 9 and 15 digits.
+Phone_hyphen,PhoneNumber,061-123456,false,Phone number must be between 9 and 15 digits.
+Phone_double_plus,PhoneNumber,++38761123456,false,Phone number must be between 9 and 15 digits.
+Password_null,Password,<NULL>,false,Password is required.
+Password_empty,Password,,false,Password is required.
+Password_whitespace,Password,        ,false,Password is required.
+Password_below_min,Password,1234567,false,Password must be at least 8 characters long.
+Password_min,Password,12345678,true,
+Password_long,Password,AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA,true,
+Confirm_null,ConfirmPassword,<NULL>,false,Confirm password is required.
+Confirm_empty,ConfirmPassword,,false,Confirm password is required.
+Confirm_whitespace,ConfirmPassword,   ,false,Confirm password is required.
+Confirm_mismatch,ConfirmPassword,Different1!,false,Passwords do not match.
+Confirm_case_mismatch,ConfirmPassword,password1!,false,Passwords do not match.
+Confirm_match,ConfirmPassword,Password1!,true,
