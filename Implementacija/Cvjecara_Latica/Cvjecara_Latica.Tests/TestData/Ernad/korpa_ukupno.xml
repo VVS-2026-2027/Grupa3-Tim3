@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<korpa>
+  <stavka naziv="15 x 2" cijena="15" kolicina="2" ocekivano="30" />
+  <stavka naziv="8 x 1" cijena="8" kolicina="1" ocekivano="8" />
+  <stavka naziv="30 x 3" cijena="30" kolicina="3" ocekivano="90" />
+  <stavka naziv="0.5 x 4" cijena="0.5" kolicina="4" ocekivano="2" />
+  <stavka naziv="Kolicina nije zadana (tretira se kao 1)" cijena="12" ocekivano="12" />
+</korpa>

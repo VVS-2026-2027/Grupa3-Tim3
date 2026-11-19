@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<podsjetnici>
+  <slucaj naziv="Kasni 12 sati: samo podsjetnik" satiKasnjenja="12" preuzeta="false" lockoutOmogucen="false" ocekivaniPodsjetnici="1" ocekivaneDeaktivacije="0" />
+  <slucaj naziv="Kasni 23 sata: samo podsjetnik" satiKasnjenja="23" preuzeta="false" lockoutOmogucen="false" ocekivaniPodsjetnici="1" ocekivaneDeaktivacije="0" />
+  <slucaj naziv="Kasni 25 sati: podsjetnik i deaktivacija" satiKasnjenja="25" preuzeta="false" lockoutOmogucen="false" ocekivaniPodsjetnici="1" ocekivaneDeaktivacije="1" />
+  <slucaj naziv="Kasni 72 sata: podsjetnik i deaktivacija" satiKasnjenja="72" preuzeta="false" lockoutOmogucen="false" ocekivaniPodsjetnici="1" ocekivaneDeaktivacije="1" />
+  <slucaj naziv="Preuzeta narudzba: nista" satiKasnjenja="72" preuzeta="true" lockoutOmogucen="false" ocekivaniPodsjetnici="0" ocekivaneDeaktivacije="0" />
+  <slucaj naziv="Dostava tek za 5 sati: nista" satiKasnjenja="-5" preuzeta="false" lockoutOmogucen="false" ocekivaniPodsjetnici="0" ocekivaneDeaktivacije="0" />
+  <slucaj naziv="LockoutEnabled true: samo podsjetnik" satiKasnjenja="72" preuzeta="false" lockoutOmogucen="true" ocekivaniPodsjetnici="1" ocekivaneDeaktivacije="0" />
+</podsjetnici>

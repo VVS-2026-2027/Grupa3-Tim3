@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<konfiguracije>
+  <slucaj naziv="Port nije postavljen u konfiguraciji" smtpServer="127.0.0.1" senderEmail="latica@test.ba" primalac="kupac@test.ba" izuzetak="System.ArgumentNullException" />
+  <slucaj naziv="Port nije broj" smtpServer="127.0.0.1" port="abc" senderEmail="latica@test.ba" primalac="kupac@test.ba" izuzetak="System.FormatException" />
+  <slucaj naziv="Port prevelik za int" smtpServer="127.0.0.1" port="99999999999" senderEmail="latica@test.ba" primalac="kupac@test.ba" izuzetak="System.OverflowException" />
+  <slucaj naziv="Port je negativan" smtpServer="127.0.0.1" port="-1" senderEmail="latica@test.ba" primalac="kupac@test.ba" izuzetak="System.ArgumentOutOfRangeException" />
+  <slucaj naziv="Prazna adresa posiljaoca" smtpServer="127.0.0.1" port="587" senderEmail="" primalac="kupac@test.ba" izuzetak="System.ArgumentException" />
+  <slucaj naziv="Neispravan format adrese posiljaoca" smtpServer="127.0.0.1" port="587" senderEmail="nije-email" primalac="kupac@test.ba" izuzetak="System.FormatException" />
+  <slucaj naziv="Prazna adresa primaoca" smtpServer="127.0.0.1" port="587" senderEmail="latica@test.ba" primalac="" izuzetak="System.ArgumentException" />
+  <slucaj naziv="Neispravan format adrese primaoca" smtpServer="127.0.0.1" port="587" senderEmail="latica@test.ba" primalac="nije-email" izuzetak="System.FormatException" />
+</konfiguracije>

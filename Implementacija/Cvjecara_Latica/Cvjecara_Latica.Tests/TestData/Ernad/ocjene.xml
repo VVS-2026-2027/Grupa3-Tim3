@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ocjene>
+  <ocjena vrijednost="1" validna="true" />
+  <ocjena vrijednost="1.5" validna="true" />
+  <ocjena vrijednost="3" validna="true" />
+  <ocjena vrijednost="4.5" validna="true" />
+  <ocjena vrijednost="5" validna="true" />
+  <ocjena vrijednost="0" validna="false" />
+  <ocjena vrijednost="0.99" validna="false" />
+  <ocjena vrijednost="5.01" validna="false" />
+  <ocjena vrijednost="6" validna="false" />
+  <ocjena vrijednost="-1" validna="false" />
+</ocjene>

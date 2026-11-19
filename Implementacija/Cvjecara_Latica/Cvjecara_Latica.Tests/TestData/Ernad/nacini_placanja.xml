@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nacini>
+  <slucaj naziv="Placanje pouzecem bez kartice" paymentTypeString="Delivery" ocekivaniTip="Cash" />
+  <slucaj naziv="Placanje pouzecem sa upisanom karticom (kartica se ipak snima)" paymentTypeString="Delivery" bankAccount="4111111111111111" ocekivaniTip="Cash" ocekivanaKartica="4111111111111111" />
+  <slucaj naziv="Placanje karticom" paymentTypeString="Card" bankAccount="4111111111111111" ocekivaniTip="CreditCard" ocekivanaKartica="4111111111111111" />
+  <slucaj naziv="Tekst CreditCard zaobilazi provjeru kartice" paymentTypeString="CreditCard" ocekivaniTip="CreditCard" />
+  <slucaj naziv="Nepoznat nacin placanja se tretira kao kartica" paymentTypeString="Nepoznato" ocekivaniTip="CreditCard" />
+</nacini>
