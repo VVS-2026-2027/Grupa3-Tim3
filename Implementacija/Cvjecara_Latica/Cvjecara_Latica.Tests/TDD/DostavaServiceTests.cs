@@ -51,5 +51,31 @@ namespace Cvjecara_Latica.Tests.TDD
             // Assert
             Assert.AreEqual(ocekivanaCijena, cijena, 0.001);
         }
+
+        // ---------- Ciklus 4: besplatna dostava ----------
+        [TestMethod]
+        [DataRow(100.0, "Sarajevo")]
+        [DataRow(100.0, "Mostar")]
+        [DataRow(250.0, "Bihać")]
+        public void IzracunajCijenuDostave_IznosOd100IVise_DostavaBesplatna(double iznos, string grad)
+        {
+            // Act
+            double cijena = _servis.IzracunajCijenuDostave(iznos, grad);
+
+            // Assert
+            Assert.AreEqual(0.0, cijena, 0.001);
+        }
+
+        [TestMethod]
+        [DataRow("Sarajevo", 5.0)]
+        [DataRow("Mostar", 10.0)]
+        public void IzracunajCijenuDostave_IznosTikIspodPraga_DostavaSeNaplacuje(string grad, double ocekivanaCijena)
+        {
+            // Act
+            double cijena = _servis.IzracunajCijenuDostave(99.99, grad);
+
+            // Assert
+            Assert.AreEqual(ocekivanaCijena, cijena, 0.001);
+        }
     }
 }
