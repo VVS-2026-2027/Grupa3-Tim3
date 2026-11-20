@@ -8,6 +8,9 @@ namespace Cvjecara_Latica.Services
                 throw new ArgumentOutOfRangeException(nameof(iznosNarudzbe), "Iznos narudžbe mora biti veći od 0.");
             if (string.IsNullOrWhiteSpace(grad))
                 throw new ArgumentException("Grad dostave mora biti unesen.", nameof(grad));
+
+                if (iznosNarudzbe >= 100.0)
+                  return 0.0;
             if (grad == "Sarajevo")
                 return 5.0;
 
