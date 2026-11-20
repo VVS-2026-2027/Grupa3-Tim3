@@ -1,0 +1,12 @@
+[
+  { "note": "tipičan kod",              "code": "SUMMER-10",             "isValid": true },
+  { "note": "donja granica (3)",        "code": "ABC",                   "isValid": true },
+  { "note": "gornja granica (20)",      "code": "ABCDEFGHIJKLMNOPQRST",  "isValid": true },
+  { "note": "prekratak (2)",            "code": "AB",                    "isValid": false },
+  { "note": "predug (21)",              "code": "ABCDEFGHIJKLMNOPQRSTU", "isValid": false },
+  { "note": "mala slova",               "code": "summer",                "isValid": false },
+  { "note": "razmak",                   "code": "SALE 10",               "isValid": false },
+  { "note": "donja crta nije dozvoljena","code": "SALE_10",              "isValid": false },
+  { "note": "prazan string",            "code": "",                      "isValid": false },
+  { "note": "null",                     "code": null,                    "isValid": false }
+]

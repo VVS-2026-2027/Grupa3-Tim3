@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Cases>
+  <!-- tipičan validan unos -->
+  <Case><PayedAmount>50</PayedAmount><DeliveryAddress>Main Street 5, Sarajevo</DeliveryAddress><BankAccount>4111111111111111</BankAccount><IsValid>true</IsValid></Case>
+  <!-- BankAccount nije obavezan (element nedostaje = null) -->
+  <Case><PayedAmount>50</PayedAmount><DeliveryAddress>Main Street 5, Sarajevo</DeliveryAddress><IsValid>true</IsValid></Case>
+  <!-- granice iznosa -->
+  <Case><PayedAmount>0.01</PayedAmount><DeliveryAddress>Main Street 5</DeliveryAddress><IsValid>true</IsValid></Case>
+  <Case><PayedAmount>10000</PayedAmount><DeliveryAddress>Main Street 5</DeliveryAddress><IsValid>true</IsValid></Case>
+  <Case><PayedAmount>0</PayedAmount><DeliveryAddress>Main Street 5</DeliveryAddress><IsValid>false</IsValid></Case>
+  <Case><PayedAmount>10000.01</PayedAmount><DeliveryAddress>Main Street 5</DeliveryAddress><IsValid>false</IsValid></Case>
+  <Case><PayedAmount>-5</PayedAmount><DeliveryAddress>Main Street 5</DeliveryAddress><IsValid>false</IsValid></Case>
+  <!-- granice adrese -->
+  <Case><PayedAmount>50</PayedAmount><DeliveryAddress>Abcde</DeliveryAddress><IsValid>true</IsValid></Case>
+  <Case><PayedAmount>50</PayedAmount><DeliveryAddress>Abcd</DeliveryAddress><IsValid>false</IsValid></Case>
+  <Case><PayedAmount>50</PayedAmount><DeliveryAddress>Street #5</DeliveryAddress><IsValid>false</IsValid></Case>
+  <Case><PayedAmount>50</PayedAmount><DeliveryAddress></DeliveryAddress><IsValid>false</IsValid></Case>
+  <Case><PayedAmount>50</PayedAmount><IsValid>false</IsValid></Case>
+  <!-- granice broja kartice -->
+  <Case><PayedAmount>50</PayedAmount><DeliveryAddress>Main Street 5</DeliveryAddress><BankAccount>1234567890123</BankAccount><IsValid>true</IsValid></Case>
+  <Case><PayedAmount>50</PayedAmount><DeliveryAddress>Main Street 5</DeliveryAddress><BankAccount>123456789012</BankAccount><IsValid>false</IsValid></Case>
+  <Case><PayedAmount>50</PayedAmount><DeliveryAddress>Main Street 5</DeliveryAddress><BankAccount>12345678901234567</BankAccount><IsValid>false</IsValid></Case>
+  <Case><PayedAmount>50</PayedAmount><DeliveryAddress>Main Street 5</DeliveryAddress><BankAccount>41111111111111ab</BankAccount><IsValid>false</IsValid></Case>
+</Cases>
