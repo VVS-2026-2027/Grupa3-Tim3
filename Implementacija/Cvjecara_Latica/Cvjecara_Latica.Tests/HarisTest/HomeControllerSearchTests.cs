@@ -232,8 +232,9 @@ public partial class HomeControllerTests
     public void BestSellers_NoBestSellers_ReturnsEmptyList()
     {
         // Arrange
-        SeedProducts();
-        foreach (var product in _context.Products) product.IsBestSeller = false;
+        _context.Products.AddRange(
+            Product(1, "Spring mix", "Sunny tulip arrangement", "Tulip", "Yellow", "Bouquet", 20, false),
+            Product(2, "Garden special", "Fragrant garden flowers", "Rose", "Red", "Single", 20, false));
         _context.SaveChanges();
 
         // Act

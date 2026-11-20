@@ -3,6 +3,9 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using Cvjecara_Latica.Models;
 
 namespace Cvjecara_Latica.Tests.NaidaTest;
@@ -28,73 +31,55 @@ public class ProductDataDrivenTests
         Assert.AreEqual(zaliha, proizvod.Stock);
     }
 
-    [TestMethod]
-    public void Proizvod_CSV_PodaciSeIspravnoUcitavaju()
-    {
-        string putanja = Path.Combine(
-            AppContext.BaseDirectory,
-            "TestData",
-              "Naida",
-               "proizvodi.csv");
+    private static string Putanja(string fajl) =>
+        Path.Combine(AppContext.BaseDirectory, "TestData", "Naida", fajl);
 
-        Assert.IsTrue(File.Exists(putanja),
-            "CSV datoteka nije pronadjena.");
-
-        var redovi = File.ReadAllLines(putanja)
+    public static IEnumerable<object[]> ProizvodiIzCsv() =>
+        File.ReadAllLines(Putanja("proizvodi.csv"))
             .Skip(1)
             .Where(red => !string.IsNullOrWhiteSpace(red))
-            .ToList();
+            .Select(red => red.Split(','))
+            .Select(k => new object[] { k[0], double.Parse(k[1], CultureInfo.InvariantCulture), int.Parse(k[2]) });
 
-        Assert.IsTrue(redovi.Count > 0);
+    public static IEnumerable<object[]> ProizvodiIzXml() =>
+        XDocument.Load(Putanja("proizvodi.xml"))
+            .Descendants("Proizvod")
+            .Select(e => new object[]
+            {
+                (string)e.Element("Naziv")!,
+                double.Parse((string)e.Element("Cijena")!, CultureInfo.InvariantCulture),
+                int.Parse((string)e.Element("Zaliha")!)
+            });
 
-        foreach (var red in redovi)
-        {
-            var kolone = red.Split(',');
+    [TestMethod]
+    [DynamicData(nameof(ProizvodiIzCsv))]
+    public void Proizvod_PodaciIzCsv_ProlazeValidaciju(string naziv, double cijena, int zaliha)
+    {
+        var proizvod = NaidaTestHelpers.Proizvod();
+        proizvod.Name = naziv;
+        proizvod.Price = cijena;
+        proizvod.Stock = zaliha;
+        var greske = new List<ValidationResult>();
 
-            var proizvod = NaidaTestHelpers.Proizvod();
-            proizvod.Name = kolone[0];
-            proizvod.Price = double.Parse(
-                kolone[1],
-                System.Globalization.CultureInfo.InvariantCulture);
-            proizvod.Stock = int.Parse(kolone[2]);
+        var validan = Validator.TryValidateObject(proizvod, new ValidationContext(proizvod), greske, true);
 
-            Assert.IsFalse(string.IsNullOrWhiteSpace(proizvod.Name));
-            Assert.IsTrue(proizvod.Price > 0);
-            Assert.IsTrue(proizvod.Stock >= 0);
-        }
+        Assert.IsTrue(validan);
+        Assert.IsEmpty(greske);
     }
 
     [TestMethod]
-    public void Proizvod_XML_PodaciSeIspravnoUcitavaju()
+    [DynamicData(nameof(ProizvodiIzXml))]
+    public void Proizvod_PodaciIzXml_ProlazeValidaciju(string naziv, double cijena, int zaliha)
     {
-        string putanja = Path.Combine(
-            AppContext.BaseDirectory,
-            "TestData",
-             "Naida",
-             "proizvodi.xml");
+        var proizvod = NaidaTestHelpers.Proizvod();
+        proizvod.Name = naziv;
+        proizvod.Price = cijena;
+        proizvod.Stock = zaliha;
+        var greske = new List<ValidationResult>();
 
-        Assert.IsTrue(File.Exists(putanja),
-            "XML datoteka nije pronadjena.");
+        var validan = Validator.TryValidateObject(proizvod, new ValidationContext(proizvod), greske, true);
 
-        var dokument = XDocument.Load(putanja);
-        var proizvodi = dokument.Descendants("Proizvod").ToList();
-
-        Assert.IsTrue(proizvodi.Count > 0);
-
-        foreach (var element in proizvodi)
-        {
-            var proizvod = NaidaTestHelpers.Proizvod();
-
-            proizvod.Name = (string)element.Element("Naziv")!;
-            proizvod.Price = double.Parse(
-                (string)element.Element("Cijena")!,
-                System.Globalization.CultureInfo.InvariantCulture);
-            proizvod.Stock = int.Parse(
-                (string)element.Element("Zaliha")!);
-
-            Assert.IsFalse(string.IsNullOrWhiteSpace(proizvod.Name));
-            Assert.IsTrue(proizvod.Price > 0);
-            Assert.IsTrue(proizvod.Stock >= 0);
-        }
+        Assert.IsTrue(validan);
+        Assert.IsEmpty(greske);
     }
 }

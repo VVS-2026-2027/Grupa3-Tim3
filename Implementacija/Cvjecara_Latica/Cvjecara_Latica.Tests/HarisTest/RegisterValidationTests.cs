@@ -7,37 +7,56 @@ namespace Cvjecara_Latica.Tests.HarisTest;
 [TestCategory("Haris")]
 public class RegisterValidationTests
 {
-    public static IEnumerable<object?[]> ValidationCasesFromCsv()
+    private static IEnumerable<object?[]> CasesFromCsv(bool expectedValid) =>
+        CsvTestData.Read("register_validation.csv")
+            .Where(row => bool.Parse(row[3]) == expectedValid)
+            .Select(row => new object?[]
+            {
+                row[0], row[1], row[2] == "<NULL>" ? null : row[2],
+                row[1] is nameof(Register.Password) or nameof(Register.ConfirmPassword) ? (row[2] == "<NULL>" ? null : row[2]) : HomeControllerTests.ValidRegistration().ConfirmPassword,
+                row[4]
+            });
+
+    public static IEnumerable<object?[]> ValidCasesFromCsv() => CasesFromCsv(true);
+
+    public static IEnumerable<object?[]> InvalidCasesFromCsv() => CasesFromCsv(false);
+
+    [TestMethod]
+    [DynamicData(nameof(ValidCasesFromCsv))]
+    public void Validate_ValidCsvFieldValue_HasNoErrors(
+        string caseName, string propertyName, string? value, string? confirmPassword, string expectedError)
     {
-        foreach (var row in CsvTestData.Read("register_validation.csv"))
-            yield return new object?[] { row[0], row[1], row[2] == "<NULL>" ? null : row[2], bool.Parse(row[3]), row[4] };
+        // Arrange
+        var model = HomeControllerTests.ValidRegistration();
+        typeof(Register).GetProperty(propertyName)!.SetValue(model, value);
+        model.ConfirmPassword = confirmPassword!;
+        var errors = new List<ValidationResult>();
+
+        // Act
+        var valid = Validator.TryValidateObject(model, new ValidationContext(model), errors, true);
+
+        // Assert
+        Assert.IsTrue(valid, caseName);
+        Assert.IsEmpty(errors, caseName);
     }
 
     [TestMethod]
-    [DynamicData(nameof(ValidationCasesFromCsv))]
-    public void Validate_CsvFieldValue_ReturnsExpectedValidationResult(
-        string caseName, string propertyName, string? value, bool expectedValid, string expectedError)
+    [DynamicData(nameof(InvalidCasesFromCsv))]
+    public void Validate_InvalidCsvFieldValue_ReturnsExpectedError(
+        string caseName, string propertyName, string? value, string? confirmPassword, string expectedError)
     {
-        // Arrange: mijenja se samo jedno polje ispravnog modela, prema CSV ulazu.
+        // Arrange
         var model = HomeControllerTests.ValidRegistration();
         typeof(Register).GetProperty(propertyName)!.SetValue(model, value);
-        if (propertyName == nameof(Register.Password)) model.ConfirmPassword = value!;
+        model.ConfirmPassword = confirmPassword!;
         var errors = new List<ValidationResult>();
 
-        // Act: testira se stvarna DataAnnotations validacija svih svojstava modela.
+        // Act
         var valid = Validator.TryValidateObject(model, new ValidationContext(model), errors, true);
 
-        // Assert: provjeravaju se validnost, konkretna poruka i pripadnost greške polju.
-        Assert.AreEqual(expectedValid, valid, caseName);
-        if (expectedValid)
-        {
-            Assert.IsEmpty(errors, caseName);
-        }
-        else
-        {
-            Assert.IsTrue(errors.Any(e => e.ErrorMessage == expectedError && e.MemberNames.Contains(propertyName)),
-                $"{caseName}: {string.Join("; ", errors.Select(e => e.ErrorMessage))}");
-        }
+        // Assert
+        Assert.IsFalse(valid, caseName);
+        Assert.IsTrue(errors.Any(e => e.ErrorMessage == expectedError && e.MemberNames.Contains(propertyName)), caseName);
     }
 
     [TestMethod]

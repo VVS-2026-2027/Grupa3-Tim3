@@ -47,7 +47,7 @@ public class ProductOrdersControllerTests
     }
 
     [TestMethod]
-    public void CreateGet_VracaView()
+    public void Create_Get_VracaView()
     {
         using var db = NaidaTestHelpers.Baza();
         var controller = new ProductOrdersController(db);

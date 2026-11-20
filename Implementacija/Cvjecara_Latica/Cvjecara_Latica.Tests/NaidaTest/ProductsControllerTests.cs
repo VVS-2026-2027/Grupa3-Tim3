@@ -10,7 +10,7 @@ namespace Cvjecara_Latica.Tests.NaidaTest;
 public class ProductsControllerTests
 {
     [TestMethod]
-    public async Task Index_VracaSveStavke()
+    public async Task Index_PostojiProizvod_VracaSveProizvode()
     {
         using var db = NaidaTestHelpers.Baza();
         db.Products.Add(NaidaTestHelpers.Proizvod());
@@ -62,7 +62,7 @@ public class ProductsControllerTests
     }
 
     [TestMethod]
-    public void CreateGet_VracaView()
+    public void Create_Get_VracaView()
     {
         using var db = NaidaTestHelpers.Baza();
 

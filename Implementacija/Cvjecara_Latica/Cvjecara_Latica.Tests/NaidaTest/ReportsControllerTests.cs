@@ -146,7 +146,7 @@ await db.SaveChangesAsync();
     }
 
     [TestMethod]
-    public void CreateGet_VracaViewIListuKorisnika()
+    public void Create_Get_VracaView()
     {
         using var db = NaidaTestHelpers.Baza();
 

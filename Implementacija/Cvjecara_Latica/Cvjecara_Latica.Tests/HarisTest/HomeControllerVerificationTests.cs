@@ -31,13 +31,27 @@ public partial class HomeControllerTests
     [DataRow("VerificationCode")]
     [DataRow("UserEmail")]
     [DataRow("CodeGeneratedAt")]
-    [DataRow("All")]
     public async Task VerifyCode_MissingSessionData_ReturnsRegisterAgainError(string missingKey)
     {
         // Arrange
         SetVerificationData();
-        if (missingKey == "All") _controller.TempData.Clear();
-        else _controller.TempData.Remove(missingKey);
+        _controller.TempData.Remove(missingKey);
+
+        // Act
+        var result = await _controller.VerifyCode("123456");
+
+        // Assert
+        Assert.IsInstanceOfType<ViewResult>(result);
+        Assert.AreEqual("Code has expired. Please register again.", _controller.ViewData["Error"]);
+        _users.Verify(u => u.FindByEmailAsync(It.IsAny<string>()), Times.Never);
+    }
+
+    [TestMethod]
+    public async Task VerifyCode_AllSessionDataMissing_ReturnsRegisterAgainError()
+    {
+        // Arrange
+        SetVerificationData();
+        _controller.TempData.Clear();
 
         // Act
         var result = await _controller.VerifyCode("123456");
