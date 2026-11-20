@@ -14,7 +14,6 @@ namespace Cvjecara_Latica.Tests.TDD
             _servis = new DostavaService();
         }
 
-
         [TestMethod]
         [DataRow(0.0)]
         [DataRow(-0.01)]
@@ -25,8 +24,6 @@ namespace Cvjecara_Latica.Tests.TDD
                 () => _servis.IzracunajCijenuDostave(iznos, "Sarajevo"));
         }
 
-       
-
         [TestMethod]
         [DataRow(null)]
         [DataRow("")]
@@ -36,6 +33,23 @@ namespace Cvjecara_Latica.Tests.TDD
             // Act & Assert
             Assert.ThrowsExactly<ArgumentException>(
                 () => _servis.IzracunajCijenuDostave(50.0, grad!));
+        }
+
+        // ---------- Ciklus 3: cijena po gradu ----------
+        [TestMethod]
+        [DataRow("Sarajevo", 5.0)]
+        [DataRow("Mostar", 10.0)]
+        [DataRow("Tuzla", 10.0)]
+        public void IzracunajCijenuDostave_IznosIspodPraga_VracaCijenuPremaGradu(string grad, double ocekivanaCijena)
+        {
+            // Arrange
+            double iznos = 50.0;
+
+            // Act
+            double cijena = _servis.IzracunajCijenuDostave(iznos, grad);
+
+            // Assert
+            Assert.AreEqual(ocekivanaCijena, cijena, 0.001);
         }
     }
 }
