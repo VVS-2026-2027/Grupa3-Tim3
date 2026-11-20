@@ -11,9 +11,9 @@ namespace Cvjecara_Latica.Services
 
                 if (iznosNarudzbe >= 100.0)
                   return 0.0;
-            if (grad == "Sarajevo")
-                return 5.0;
-
+            if (grad.Trim().Equals("Sarajevo", StringComparison.OrdinalIgnoreCase)) 
+             return 5.0;
+             
             return 10.0;
         }
     }
