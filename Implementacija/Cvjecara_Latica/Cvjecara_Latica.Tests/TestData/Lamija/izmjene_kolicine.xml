@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Data-driven (XML): početna količina stavke -> nova količina koju korisnik unosi u Edit formi -->
+<IzmjeneKolicine>
+  <Izmjena>
+    <Pocetna>1</Pocetna>
+    <Nova>5</Nova>
+  </Izmjena>
+  <Izmjena>
+    <Pocetna>10</Pocetna>
+    <Nova>2</Nova>
+  </Izmjena>
+  <Izmjena>
+    <Pocetna>3</Pocetna>
+    <Nova>3</Nova>
+  </Izmjena>
+  <Izmjena>
+    <Pocetna>1</Pocetna>
+    <Nova>100</Nova>
+  </Izmjena>
+</IzmjeneKolicine>
