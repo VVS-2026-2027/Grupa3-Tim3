@@ -2,6 +2,9 @@ using Cvjecara_Latica.Services;
 
 namespace Cvjecara_Latica.Tests.TDD
 {
+    /// <summary>
+    /// TDD testovi za funkcionalnost F1 – cijena dostave.
+    /// </summary>
     [TestClass]
     [TestCategory("TDD-F1-Dostava")]
     public class DostavaServiceTests
@@ -14,16 +17,19 @@ namespace Cvjecara_Latica.Tests.TDD
             _servis = new DostavaService();
         }
 
+        // ---------- Ciklus 1: neispravan iznos ----------
         [TestMethod]
         [DataRow(0.0)]
         [DataRow(-0.01)]
         [DataRow(-50.0)]
         public void IzracunajCijenuDostave_IznosNijePozitivan_BacaArgumentOutOfRangeException(double iznos)
         {
+            // Act & Assert
             Assert.ThrowsExactly<ArgumentOutOfRangeException>(
                 () => _servis.IzracunajCijenuDostave(iznos, "Sarajevo"));
         }
 
+        // ---------- Ciklus 2: grad nije unesen ----------
         [TestMethod]
         [DataRow(null)]
         [DataRow("")]
@@ -76,6 +82,20 @@ namespace Cvjecara_Latica.Tests.TDD
 
             // Assert
             Assert.AreEqual(ocekivanaCijena, cijena, 0.001);
+        }
+
+        // ---------- Ciklus 5: format naziva grada ----------
+        [TestMethod]
+        [DataRow("sarajevo")]
+        [DataRow("SARAJEVO")]
+        [DataRow("  Sarajevo  ")]
+        public void IzracunajCijenuDostave_GradRazlicitoNapisan_PrepoznajeSarajevo(string grad)
+        {
+            // Act
+            double cijena = _servis.IzracunajCijenuDostave(50.0, grad);
+
+            // Assert
+            Assert.AreEqual(5.0, cijena, 0.001);
         }
     }
 }
