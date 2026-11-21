@@ -55,5 +55,26 @@ namespace Cvjecara_Latica.Tests.TDD
             // Assert
             Assert.AreEqual(0, rezultat.Count);
         }
+
+        // ---------- Ciklus 3: nedovoljne zalihe ----------
+
+        [TestMethod]
+        public void ProizvodiBezDovoljnoZaliha_KolicinaVecaOdZalihe_VracaIdProizvoda()
+        {
+            // Arrange
+            var stavke = new List<Cart>
+            {
+                Stavka(1, 10, 3),
+                Stavka(2, 2, 5),
+                Stavka(3, 0, 1)
+            };
+            var ocekivano = new List<int> { 2, 3 };
+
+            // Act
+            var rezultat = _servis.ProizvodiBezDovoljnoZaliha(stavke);
+
+            // Assert
+            CollectionAssert.AreEqual(ocekivano, rezultat);
+        }
     }
 }
