@@ -76,5 +76,20 @@ namespace Cvjecara_Latica.Tests.TDD
             // Assert
             CollectionAssert.AreEqual(ocekivano, rezultat);
         }
+        // ---------- Ciklus 4: neispravna količina ----------
+
+        [TestMethod]
+        [DataRow(0)]
+        [DataRow(-1)]
+        [DataRow(null)]
+        public void ProizvodiBezDovoljnoZaliha_NeispravnaKolicina_BacaArgumentException(int? kolicina)
+        {
+            // Arrange
+            var stavke = new List<Cart> { Stavka(1, 10, kolicina) };
+
+            // Act & Assert
+            Assert.ThrowsExactly<ArgumentException>(
+                () => _servis.ProizvodiBezDovoljnoZaliha(stavke));
+        }
     }
 }
