@@ -1,3 +1,4 @@
+using Cvjecara_Latica.Models;
 using Cvjecara_Latica.Services;
 
 namespace Cvjecara_Latica.Tests.TDD
@@ -13,7 +14,14 @@ namespace Cvjecara_Latica.Tests.TDD
         {
             _servis = new ZaliheService();
         }
-
+        // Pomoćna metoda za kreiranje stavke korpe (bez logike, samo gradi objekat)
+        private static Cart Stavka(int proizvodId, int zaliha, int? kolicina) =>
+            new Cart
+            {
+                ProductID = proizvodId,
+                ProductQuantity = kolicina,
+                Product = new Product { ProductID = proizvodId, Stock = zaliha }
+            };
         [TestMethod]
         public void ProizvodiBezDovoljnoZaliha_StavkeNull_BacaArgumentNullException()
         {
@@ -22,6 +30,30 @@ namespace Cvjecara_Latica.Tests.TDD
             // Act & Assert
             Assert.ThrowsExactly<ArgumentNullException>(
                 () => _servis.ProizvodiBezDovoljnoZaliha(null!));
+        }
+        // ---------- Ciklus 2: nema nedostajućih proizvoda ----------
+
+        [TestMethod]
+        public void ProizvodiBezDovoljnoZaliha_PraznaKorpa_VracaPraznuListu()
+        {
+            // Act
+            var rezultat = _servis.ProizvodiBezDovoljnoZaliha(new List<Cart>());
+
+            // Assert
+            Assert.AreEqual(0, rezultat.Count);
+        }
+
+        [TestMethod]
+        public void ProizvodiBezDovoljnoZaliha_SveKolicineDostupne_VracaPraznuListu()
+        {
+            // Arrange
+            var stavke = new List<Cart> { Stavka(1, 10, 3), Stavka(2, 5, 5) };
+
+            // Act
+            var rezultat = _servis.ProizvodiBezDovoljnoZaliha(stavke);
+
+            // Assert
+            Assert.AreEqual(0, rezultat.Count);
         }
     }
 }
