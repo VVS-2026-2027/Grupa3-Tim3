@@ -8,7 +8,15 @@ namespace Cvjecara_Latica.Services
         {
             ArgumentNullException.ThrowIfNull(stavke);
 
-            return new List<int>();
+            var nedostupni = new List<int>();
+
+            foreach (var stavka in stavke)
+            {
+                if (stavka.ProductQuantity > stavka.Product.Stock)
+                    nedostupni.Add(stavka.ProductID);
+            }
+
+            return nedostupni;
         }
     }
 }
