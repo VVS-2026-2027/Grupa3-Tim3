@@ -4,9 +4,10 @@ namespace Cvjecara_Latica.Services
 {
     public class ZaliheService
     {
-        public List<int> ProizvodiBezDovoljnoZaliha(
-            IEnumerable<Cart> stavke)
+        public List<int> ProizvodiBezDovoljnoZaliha(IEnumerable<Cart> stavke)
         {
+            ArgumentNullException.ThrowIfNull(stavke);
+
             throw new NotImplementedException();
         }
     }

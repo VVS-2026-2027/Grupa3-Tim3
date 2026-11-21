@@ -1,0 +1,25 @@
+Summary
+  Generated on: 19. 11. 2026. - 16:13:49
+  Coverage date: 19. 11. 2026. - 16:13:37
+  Parser: Cobertura
+  Assemblies: 1
+  Classes: 3
+  Files: 3
+  Line coverage: 98.1%
+  Covered lines: 372
+  Uncovered lines: 7
+  Coverable lines: 379
+  Total lines: 602
+  Branch coverage: 98.5% (134 of 136)
+  Covered branches: 134
+  Total branches: 136
+  Method coverage: 95.6% (22 of 23)
+  Full method coverage: 78.2% (18 of 23)
+  Covered methods: 22
+  Fully covered methods: 18
+  Total methods: 23
+
+Cvjecara_Latica                                 98.1%
+  Cvjecara_Latica.Controllers.CartsController   98.9%
+  Cvjecara_Latica.Services.EmailService         91.6%
+  UnclaimedOrderChecker                           98%
