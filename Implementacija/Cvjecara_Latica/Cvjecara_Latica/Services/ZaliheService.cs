@@ -8,7 +8,7 @@ namespace Cvjecara_Latica.Services
         {
             ArgumentNullException.ThrowIfNull(stavke);
 
-            throw new NotImplementedException();
+            return new List<int>();
         }
     }
 }
